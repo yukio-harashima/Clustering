@@ -1,0 +1,61 @@
+# ===================================================================
+#      Clustering App Server - Configuration File
+# ===================================================================
+# - Lines starting with # are comments and will be ignored.
+# - Do not use quotes for string values.
+# - For boolean values, use True or False (case-sensitive).
+
+# --- Execution Mode ---
+# mode: Determines which operation to perform.
+#   "run-shc":    Run the full SHC pipeline.
+#   "run-ward":   Run the full traditional Ward's method pipeline.
+#   "re-cluster": Re-cluster using a saved SHC linkage matrix.
+mode = run-shc
+
+
+# ===================================================================
+#      Settings for 'run-shc' and 'run-ward' modes
+# ===================================================================
+
+# --- General Settings (used by both run-shc and run-ward) ---
+
+working_directory = ./
+filter_method = advanced_filtering
+# filter_value: For 'advanced_filtering', it's the extraction percentage (e.g., 0.25 for top 25%).
+#               For 'arbitrary_percentage', it's the quantile (e.g., 0.75 to filter values above the 75th percentile).
+filter_value = 0.25
+variable_selection_method = nv6_components_nmtw_sliprate
+# custom_columns: A comma-separated list of column names. Only used if variable_selection_method is 'custom_columns'.
+# custom_columns = n,m,tw,sliprate,Mrr,Mss,Mee
+standardization = True
+pca_method = pca_80
+
+
+# --- Method-Specific Settings ---
+
+# Settings for 'run-shc' (ignored if mode is not 'run-shc')
+clustering_method = shc
+shc_alpha = 1.0
+shc_lambda = 10.0
+shc_metric = cosine
+n_clusters = 5
+n_jobs = -1
+
+# Settings for 'run-ward' (ignored if mode is not 'run-ward')
+# clustering_method = ward
+distance_metric = cosine
+threshold_method = threshold_silhouette
+# target_cluster_count_for_arbitrary = 10 # Only for 'threshold_arbitrary' method
+
+
+# ===================================================================
+#      Settings for 're-cluster' mode
+# ===================================================================
+# These are only used if mode is 're-cluster'.
+
+# source_dir: The directory of a previous 'run-shc' execution
+#             which contains the 'shc_linkage_matrix.dat' file.
+source_dir = ./SHC_euc_a1p0_l10p0_k5
+
+# n_clusters for re-clustering: The new number of clusters you want.
+# n_clusters = 8
