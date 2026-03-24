@@ -1,6 +1,6 @@
 # Finite Fault Clustering & Plotting Pipeline
 
-本リポジトリは、有限断層インバージョン（PDTI）の計算結果を入力として、断層モデルの階層型クラスタリングによるクラスターの分割と、GMT6（Generic Mapping Tools）を用いた多様な可視化を行うための解析パイプラインです。
+本リポジトリは、PDTIの計算結果を入力として、断層モデルの階層型クラスタリングによるクラスターの分割と、GMT6（Generic Mapping Tools）を用いた多様な可視化を行うための解析パイプラインです。
 
 ## リポジトリの構成
 
