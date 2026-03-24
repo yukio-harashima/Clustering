@@ -5,7 +5,7 @@
 
 ## 収録ファイル・ディレクトリの詳細解説
 
-### 1. `snapper.bash` / `snapper_mf.bash` (データ抽出スクリプト)
+### 1. `snapper.bash` / `snapper_mf.bash` (クラスタリング用 データ成形スクリプト)
 クラスタリングの起点となるBashスクリプトです（単一断層面用が `snapper.bash`、複数断層面用が `snapper_mf.bash`）。
 PDTIの出力結果（`fort.40` や `mrf.dat` など）を読み込み、内部でFortranのデータ成形ツール（`fgensnap_y` 等）を呼び出して、クラスタリングの入力となるスナップショットデータ（`snap_y.dat` や `snap.dat` など）を生成します。
 
